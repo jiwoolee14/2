@@ -1,225 +1,376 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>신한 Market Dashboard</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <style>
-    * {
-      box-sizing: border-box;
-    }
+<title>Shinhan Market Dashboard</title>
 
-    body {
-      margin: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo",
-                   "Noto Sans KR", sans-serif;
-      background: #f5f6f8;
-      color: #202124;
-    }
+<style>
+* {
+  box-sizing: border-box;
+}
 
-    .header {
-      background: #ffffff;
-      padding: 22px 18px 16px;
-      border-bottom: 1px solid #e5e7eb;
-    }
+body {
+  margin: 0;
+  background: #f4f6f8;
+  color: #202124;
+  font-family:
+    -apple-system,
+    BlinkMacSystemFont,
+    "Apple SD Gothic Neo",
+    "Noto Sans KR",
+    sans-serif;
+}
 
-    .title {
-      font-size: 24px;
-      font-weight: 800;
-    }
+.header {
+  background: white;
+  padding: 22px 18px 16px;
+  border-bottom: 1px solid #e5e7eb;
+}
 
-    .subtitle {
-      margin-top: 5px;
-      color: #777;
-      font-size: 13px;
-    }
+.title {
+  font-size: 23px;
+  font-weight: 800;
+}
 
-    .container {
-      padding: 16px;
-      max-width: 720px;
-      margin: auto;
-    }
+.subtitle {
+  margin-top: 5px;
+  font-size: 12px;
+  color: #8a8a8a;
+}
 
-    .card {
-      background: white;
-      border-radius: 16px;
-      padding: 18px;
-      margin-bottom: 14px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.04);
-    }
+.container {
+  max-width: 720px;
+  margin: auto;
+  padding: 15px;
+}
 
-    .section-title {
-      font-size: 16px;
-      font-weight: 750;
-      margin-bottom: 14px;
-    }
+.card {
+  background: white;
+  border-radius: 17px;
+  padding: 18px;
+  margin-bottom: 14px;
+  box-shadow: 0 3px 12px rgba(0,0,0,.04);
+}
 
-    .market {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 10px;
-    }
+.section-title {
+  font-size: 16px;
+  font-weight: 800;
+  margin-bottom: 14px;
+}
 
-    .market-box {
-      background: #f8f9fb;
-      border-radius: 12px;
-      padding: 15px;
-    }
+.market-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
 
-    .label {
-      color: #777;
-      font-size: 12px;
-      margin-bottom: 6px;
-    }
+.market-box {
+  background: #f7f8fa;
+  border-radius: 13px;
+  padding: 15px;
+}
 
-    .value {
-      font-size: 20px;
-      font-weight: 800;
-    }
+.label {
+  font-size: 12px;
+  color: #777;
+  margin-bottom: 7px;
+}
 
-    .up {
-      color: #e53935;
-    }
+.price {
+  font-size: 20px;
+  font-weight: 850;
+}
 
-    .down {
-      color: #1976d2;
-    }
+.up {
+  color: #e53935;
+}
 
-    .signal {
-      text-align: center;
-      padding: 20px;
-      border-radius: 14px;
-      background: #f8f9fb;
-    }
+.down {
+  color: #1976d2;
+}
 
-    .signal-main {
-      font-size: 28px;
-      font-weight: 900;
-    }
+.neutral {
+  color: #777;
+}
 
-    .signal-sub {
-      margin-top: 7px;
-      color: #777;
-      font-size: 13px;
-    }
+.signal {
+  text-align: center;
+  padding: 22px 15px;
+  border-radius: 14px;
+  background: #f7f8fa;
+}
 
-    .row {
-      display: flex;
-      justify-content: space-between;
-      padding: 11px 0;
-      border-bottom: 1px solid #eee;
-      font-size: 14px;
-    }
+.signal-main {
+  font-size: 28px;
+  font-weight: 900;
+}
 
-    .row:last-child {
-      border-bottom: none;
-    }
+.signal-description {
+  margin-top: 7px;
+  font-size: 13px;
+  color: #777;
+  line-height: 1.5;
+}
 
-    .footer {
-      text-align: center;
-      color: #999;
-      font-size: 11px;
-      padding: 20px;
-    }
-  </style>
+.row {
+  display: flex;
+  justify-content: space-between;
+  padding: 12px 0;
+  border-bottom: 1px solid #eeeeee;
+  font-size: 14px;
+}
+
+.row:last-child {
+  border-bottom: none;
+}
+
+.score {
+  font-size: 34px;
+  font-weight: 900;
+  text-align: center;
+  margin: 8px 0;
+}
+
+.bar {
+  height: 9px;
+  background: #eceff1;
+  border-radius: 20px;
+  overflow: hidden;
+  margin-top: 12px;
+}
+
+.bar-inner {
+  height: 100%;
+  width: 62%;
+  background: #555;
+  border-radius: 20px;
+}
+
+.small {
+  font-size: 11px;
+  color: #999;
+  text-align: center;
+  margin-top: 8px;
+}
+
+.notice {
+  background: #fff8e1;
+  color: #765900;
+  border-radius: 12px;
+  padding: 13px;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.footer {
+  text-align: center;
+  color: #aaa;
+  font-size: 10px;
+  padding: 10px 20px 25px;
+}
+</style>
 </head>
+
 
 <body>
 
-  <div class="header">
-    <div class="title">📊 Market Dashboard</div>
-    <div class="subtitle">신한 주식시장 분석 V0.1</div>
+<div class="header">
+  <div class="title">📊 Market Dashboard</div>
+  <div class="subtitle">
+    Shinhan Market Analysis · V0.2
   </div>
+</div>
 
-  <div class="container">
 
-    <div class="card">
-      <div class="section-title">오늘의 시장</div>
+<div class="container">
 
-      <div class="market">
 
-        <div class="market-box">
-          <div class="label">KOSPI</div>
-          <div class="value up">2,950.12 ▲ 0.82%</div>
-        </div>
+  <!-- 시장 -->
+  <div class="card">
 
-        <div class="market-box">
-          <div class="label">KOSDAQ</div>
-          <div class="value up">865.31 ▲ 0.47%</div>
-        </div>
-
-      </div>
+    <div class="section-title">
+      오늘의 시장
     </div>
 
+    <div class="market-grid">
 
-    <div class="card">
-
-      <div class="section-title">시장 신호</div>
-
-      <div class="signal">
-        <div class="signal-main">관망</div>
-        <div class="signal-sub">
-          현재는 강한 매수 신호가 확인되지 않았습니다.
+      <div class="market-box">
+        <div class="label">KOSPI</div>
+        <div class="price up">
+          2,950.12
+          <span style="font-size:13px;">▲ 0.82%</span>
         </div>
       </div>
 
-    </div>
-
-
-    <div class="card">
-
-      <div class="section-title">수급 분석</div>
-
-      <div class="row">
-        <span>외국인</span>
-        <strong class="up">+1,240억</strong>
-      </div>
-
-      <div class="row">
-        <span>기관</span>
-        <strong class="up">+380억</strong>
-      </div>
-
-      <div class="row">
-        <span>개인</span>
-        <strong class="down">-1,620억</strong>
-      </div>
-
-      <div class="row">
-        <span>프로그램</span>
-        <strong class="up">+520억</strong>
-      </div>
-
-    </div>
-
-
-    <div class="card">
-
-      <div class="section-title">기술적 지표</div>
-
-      <div class="row">
-        <span>RSI(14)</span>
-        <strong>54.2</strong>
-      </div>
-
-      <div class="row">
-        <span>5일 이동평균</span>
-        <strong>상승</strong>
-      </div>
-
-      <div class="row">
-        <span>20일 이동평균</span>
-        <strong>상승</strong>
+      <div class="market-box">
+        <div class="label">KOSDAQ</div>
+        <div class="price up">
+          865.31
+          <span style="font-size:13px;">▲ 0.47%</span>
+        </div>
       </div>
 
     </div>
 
   </div>
 
-  <div class="footer">
-    SHINHAN MARKET DASHBOARD · V0.1
+
+  <!-- 종합 신호 -->
+  <div class="card">
+
+    <div class="section-title">
+      시장 종합 신호
+    </div>
+
+    <div class="signal">
+
+      <div class="signal-main">
+        🟡 관망
+      </div>
+
+      <div class="signal-description">
+        추세와 수급은 일부 긍정적이지만<br>
+        강한 추세 신호가 확인되지 않은 상태
+      </div>
+
+    </div>
+
   </div>
+
+
+  <!-- 수급 -->
+  <div class="card">
+
+    <div class="section-title">
+      투자자 수급
+    </div>
+
+    <div class="row">
+      <span>외국인</span>
+      <strong class="up">+1,240억</strong>
+    </div>
+
+    <div class="row">
+      <span>기관</span>
+      <strong class="up">+380억</strong>
+    </div>
+
+    <div class="row">
+      <span>개인</span>
+      <strong class="down">-1,620억</strong>
+    </div>
+
+    <div class="row">
+      <span>프로그램</span>
+      <strong class="up">+520억</strong>
+    </div>
+
+  </div>
+
+
+  <!-- 기술적 지표 -->
+  <div class="card">
+
+    <div class="section-title">
+      기술적 지표
+    </div>
+
+    <div class="row">
+      <span>RSI (14)</span>
+      <strong>54.2</strong>
+    </div>
+
+    <div class="row">
+      <span>5일 이동평균</span>
+      <strong class="up">상승</strong>
+    </div>
+
+    <div class="row">
+      <span>20일 이동평균</span>
+      <strong class="up">상승</strong>
+    </div>
+
+    <div class="row">
+      <span>거래량 추세</span>
+      <strong>평균 이상</strong>
+    </div>
+
+  </div>
+
+
+  <!-- 분석 점수 -->
+  <div class="card">
+
+    <div class="section-title">
+      Market Score
+    </div>
+
+    <div class="score">
+      62 / 100
+    </div>
+
+    <div class="bar">
+      <div class="bar-inner"></div>
+    </div>
+
+    <div class="small">
+      추세 · 수급 · 모멘텀을 종합한 참고용 점수
+    </div>
+
+  </div>
+
+
+  <!-- 판단 근거 -->
+  <div class="card">
+
+    <div class="section-title">
+      분석 근거
+    </div>
+
+    <div class="row">
+      <span>추세</span>
+      <strong class="up">긍정</strong>
+    </div>
+
+    <div class="row">
+      <span>외국인 수급</span>
+      <strong class="up">긍정</strong>
+    </div>
+
+    <div class="row">
+      <span>기관 수급</span>
+      <strong class="up">약긍정</strong>
+    </div>
+
+    <div class="row">
+      <span>모멘텀</span>
+      <strong>중립</strong>
+    </div>
+
+    <div class="row">
+      <span>과열 여부</span>
+      <strong class="neutral">정상</strong>
+    </div>
+
+  </div>
+
+
+  <div class="notice">
+    ⚠️ 현재 화면의 숫자는 테스트 데이터입니다.
+    실제 투자 판단이나 주문에 사용하지 않습니다.
+    이후 신한투자증권 API를 안전하게 연결할 예정입니다.
+  </div>
+
+
+</div>
+
+
+<div class="footer">
+  SHINHAN MARKET DASHBOARD · V0.2
+</div>
+
 
 </body>
 </html>
