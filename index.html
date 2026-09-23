@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>신한 Market Dashboard</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo",
+                   "Noto Sans KR", sans-serif;
+      background: #f5f6f8;
+      color: #202124;
+    }
+
+    .header {
+      background: #ffffff;
+      padding: 22px 18px 16px;
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    .title {
+      font-size: 24px;
+      font-weight: 800;
+    }
+
+    .subtitle {
+      margin-top: 5px;
+      color: #777;
+      font-size: 13px;
+    }
+
+    .container {
+      padding: 16px;
+      max-width: 720px;
+      margin: auto;
+    }
+
+    .card {
+      background: white;
+      border-radius: 16px;
+      padding: 18px;
+      margin-bottom: 14px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+    }
+
+    .section-title {
+      font-size: 16px;
+      font-weight: 750;
+      margin-bottom: 14px;
+    }
+
+    .market {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .market-box {
+      background: #f8f9fb;
+      border-radius: 12px;
+      padding: 15px;
+    }
+
+    .label {
+      color: #777;
+      font-size: 12px;
+      margin-bottom: 6px;
+    }
+
+    .value {
+      font-size: 20px;
+      font-weight: 800;
+    }
+
+    .up {
+      color: #e53935;
+    }
+
+    .down {
+      color: #1976d2;
+    }
+
+    .signal {
+      text-align: center;
+      padding: 20px;
+      border-radius: 14px;
+      background: #f8f9fb;
+    }
+
+    .signal-main {
+      font-size: 28px;
+      font-weight: 900;
+    }
+
+    .signal-sub {
+      margin-top: 7px;
+      color: #777;
+      font-size: 13px;
+    }
+
+    .row {
+      display: flex;
+      justify-content: space-between;
+      padding: 11px 0;
+      border-bottom: 1px solid #eee;
+      font-size: 14px;
+    }
+
+    .row:last-child {
+      border-bottom: none;
+    }
+
+    .footer {
+      text-align: center;
+      color: #999;
+      font-size: 11px;
+      padding: 20px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="header">
+    <div class="title">📊 Market Dashboard</div>
+    <div class="subtitle">신한 주식시장 분석 V0.1</div>
+  </div>
+
+  <div class="container">
+
+    <div class="card">
+      <div class="section-title">오늘의 시장</div>
+
+      <div class="market">
+
+        <div class="market-box">
+          <div class="label">KOSPI</div>
+          <div class="value up">2,950.12 ▲ 0.82%</div>
+        </div>
+
+        <div class="market-box">
+          <div class="label">KOSDAQ</div>
+          <div class="value up">865.31 ▲ 0.47%</div>
+        </div>
+
+      </div>
+    </div>
+
+
+    <div class="card">
+
+      <div class="section-title">시장 신호</div>
+
+      <div class="signal">
+        <div class="signal-main">관망</div>
+        <div class="signal-sub">
+          현재는 강한 매수 신호가 확인되지 않았습니다.
+        </div>
+      </div>
+
+    </div>
+
+
+    <div class="card">
+
+      <div class="section-title">수급 분석</div>
+
+      <div class="row">
+        <span>외국인</span>
+        <strong class="up">+1,240억</strong>
+      </div>
+
+      <div class="row">
+        <span>기관</span>
+        <strong class="up">+380억</strong>
+      </div>
+
+      <div class="row">
+        <span>개인</span>
+        <strong class="down">-1,620억</strong>
+      </div>
+
+      <div class="row">
+        <span>프로그램</span>
+        <strong class="up">+520억</strong>
+      </div>
+
+    </div>
+
+
+    <div class="card">
+
+      <div class="section-title">기술적 지표</div>
+
+      <div class="row">
+        <span>RSI(14)</span>
+        <strong>54.2</strong>
+      </div>
+
+      <div class="row">
+        <span>5일 이동평균</span>
+        <strong>상승</strong>
+      </div>
+
+      <div class="row">
+        <span>20일 이동평균</span>
+        <strong>상승</strong>
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="footer">
+    SHINHAN MARKET DASHBOARD · V0.1
+  </div>
+
+</body>
+</html>
